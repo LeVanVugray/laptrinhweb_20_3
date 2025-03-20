@@ -16,13 +16,30 @@
 
 <div class="container">
     <h2>Màn hình đăng nhập</h2>
-    <input type="text" placeholder="Username">
-    <input type="password" placeholder="Mật khẩu">
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Mật khẩu">
     <div>
-        <input type="checkbox"> Ghi nhớ đăng nhập
+        <input type="checkbox" id="remember"> Ghi nhớ đăng nhập
     </div>
-    <button>Đăng nhập</button>
+    <button onclick="validateLogin()">Đăng nhập</button>
+    <p id="error-message" style="color: red;"></p> <!-- Hiển thị lỗi -->
 </div>
+
+<script>
+    function validateLogin() {
+        let username = document.getElementById("username").value.trim();
+        let password = document.getElementById("password").value.trim();
+        let errorMessage = document.getElementById("error-message");
+
+        if (username === "" || password === "") {
+            errorMessage.textContent = "Vui lòng nhập đầy đủ thông tin!";
+        } else {
+            errorMessage.textContent = ""; // Xóa thông báo lỗi nếu hợp lệ
+            alert("Đăng nhập thành công!"); // Có thể thay bằng xử lý đăng nhập thật
+            window.location.href = "list.html"; // Chuyển hướng đến trang dashboard
+        }
+    }
+</script>
 
 </body>
 </html>
