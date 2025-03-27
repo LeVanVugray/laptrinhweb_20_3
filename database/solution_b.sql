@@ -35,13 +35,9 @@ ORDER BY so_don_hang DESC
 LIMIT 7;
 
 -- 6 Liệt kê 7 người dùng mua sản phẩm có tên Samsung hoặc Apple:
-SELECT DISTINCT orders.user_id, users.user_name, orders.order_id, products.product_name
-FROM orders
-JOIN users ON orders.user_id = users.user_id
-JOIN order_details ON orders.order_id = order_details.order_id
-JOIN products ON order_details.product_id = products.product_id
-WHERE products.product_name LIKE '%Samsung%' OR products.product_name LIKE '%Apple%'
-LIMIT 7;
+SELECT `products`.`product_id`, `product_name`, `users`.`user_id`, `users`.`user_name`
+FROM `products`, `users` WHERE `products`.`product_name` LIKE '%samsung%' 
+OR `products`.`product_name` LIKE '%apple%' LIMIT 7;
 
 -- 7 Liệt kê danh sách mua hàng của user bao gồm tổng tiền từng đơn hàng:
 SELECT orders.user_id, users.user_name, orders.order_id, SUM(products.product_price) AS tong_tien
